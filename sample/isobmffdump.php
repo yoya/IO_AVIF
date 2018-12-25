@@ -3,15 +3,14 @@
 if (is_readable('vendor/autoload.php')) {
     require 'vendor/autoload.php';
 } else {
-    require_once 'IO/HEIF.php';
+    require_once 'IO/ISOBMFF.php';
 }
 
 $options = getopt("f:hvtdR");
 
 if ((isset($options['f']) === false) || (($options['f'] !== "-") && is_readable($options['f']) === false)) {
-    fprintf(STDERR, "Usage: php heifdump.php -f <heif_file> [-htvd]\n");
-    fprintf(STDERR, "ex) php heifdump.php -f test.heic -h \n");
-    fprintf(STDERR, "ex) php heifdump.php -f test.heic -t \n");
+    fprintf(STDERR, "Usage: php isobmffdump.php -f <isobmff_file> [-htvd]\n");
+    fprintf(STDERR, "ex) php isobmffdump.php -f test.heic -t \n");
     exit(1);
 }
 
@@ -19,7 +18,7 @@ $filename = $options['f'];
 if ($filename === "-") {
     $filename = "php://stdin";
 }
-$heifdata = file_get_contents($filename);
+$isobmffdata = file_get_contents($filename);
 
 $opts = array();
 
@@ -39,14 +38,14 @@ if (isset($options['r'])) {
     $opts['restrict'] = true;
 }
 
-$heif = new IO_HEIF();
+$isobmff = new IO_ISOBMFF();
 try {
-    $heif->parse($heifdata, $opts);
+    $isobmff->parse($isobmffdata, $opts);
 } catch (Exception $e) {
-    echo "ERROR: heifdump: $filename:".PHP_EOL;
+    echo "ERROR: isobmffdump: $filename:".PHP_EOL;
     echo $e->getMessage()." file:".$e->getFile()." line:".$e->getLine().PHP_EOL;
     echo $e->getTraceAsString().PHP_EOL;
     exit (1);
 }
 
-$heif->dump($opts);
+$isobmff->dump($opts);

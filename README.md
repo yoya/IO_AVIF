@@ -1,30 +1,28 @@
-IO_HEIF
+IO_ISOBMFF
 ======
 
-HEIF binary perser dumper, converter, powered by PHP.
-bidirectional converter with H.265/HEVC
+ISOBMFF binary perser dumper, converter, powered by PHP.
+bidirectional converter with ISOBMFF
 
 # install
 
 ```
-% composer require yoya/io_heif
+% composer require yoya/io_isobmff
 ```
 
 # require
 
 - IO_Bit
  - https://github.com/yoya/IO_Bit
-- IO_HEVC
- - https://github.com/yoya/IO_HEVC
 - IO_ICC
  - https://github.com/yoya/IO_ICC
 
 ## script (sample/*.php)
 
-- heifdump.php
+- isobmffdump.php
 
 ```
-% php vendor/yoya/io_heif/sample/heifdump.php -f input.heic
+% php vendor/yoya/io_isobmff/sample/isobmffdump.php -f input.heic
 type:ftyp(offset:0 len:24):File Type and Compatibility
   major:mif1 minor:0  alt:mif1, heic
 type:mdat(offset:24 len:139682):Media Data
@@ -40,10 +38,10 @@ type:meta(offset:139706 len:328):Information about items
 (omit...)
 ```
 
-- heiftree.php
+- isobmfftree.php
 
 ```
-% php vendor/yoya/io_heif/sample/heiftree.php -f input.heic
+% php vendor/yoya/io_isobmff/sample/isobmfftree.php -f input.heic
 Props:
 [1]: colr subtype:prof
 [2]: hvcC profile:3 level:90 chroma:1
@@ -57,16 +55,4 @@ Items:
 [49]: pitm type:grid method:1 ref:0 offset:0 length:8
 [50]: thmb from:49 type:hvc1 method:0 ref:0 offset:3995 length:22809
 [51]: cdsc from:49 type:Exif method:0 ref:0 offset:26804 length:2182
-```
-
-- heiffromhevc.php
-
-```
-% php vendor/yoya/io_heif/sample/heiffromhevc.php -f input.hevc > output.heic
-```
-
-- heiftohevc.php
-
-```
-% php vendor/yoya/io_heif/sample/heiftohevc.php -f input.heic > output.hevc
 ```
