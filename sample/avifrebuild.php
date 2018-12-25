@@ -3,29 +3,29 @@
 if (is_readable('vendor/autoload.php')) {
     require 'vendor/autoload.php';
 } else {
-    require_once 'IO/ISOBMFF.php';
+    require_once 'IO/AVIF.php';
 }
 
 $options = getopt("f:");
 
 if ((isset($options['f']) === false) || (is_readable($options['f']) === false)) {
-    fprintf(STDERR, "Usage: php isobmffrebuild.php -f <isobmff_file> [-h]\n");
-    fprintf(STDERR, "ex) php isobmffrebuild.php -f test.heic\n");
+    fprintf(STDERR, "Usage: php avifrebuild.php -f <avif_file> [-h]\n");
+    fprintf(STDERR, "ex) php avifrebuild.php -f test.avif\n");
     exit(1);
 }
 
 $filename = $options['f'];
-$isobmffdata = file_get_contents($filename);
+$avifdata = file_get_contents($filename);
 
-$isobmff = new IO_ISOBMFF();
+$avif = new IO_AVIF();
 try {
-    $isobmff->parse($isobmffdata);
+    $avif->parse($avifdata);
 } catch (Exception $e) {
-    echo "ERROR: isobmffrebuild: $filename:".PHP_EOL;
+    echo "ERROR: avifrebuild: $filename:".PHP_EOL;
     echo $e->getMessage()." file:".$e->getFile()." line:".$e->getLine().PHP_EOL;
     echo $e->getTraceAsString().PHP_EOL;
     exit (1);
 }
 
 
-echo $isobmff->build();
+echo $avif->build();
