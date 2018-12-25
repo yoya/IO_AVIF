@@ -3,14 +3,14 @@
 if (is_readable('vendor/autoload.php')) {
     require 'vendor/autoload.php';
 } else {
-    require_once 'IO/ISOBMFF.php';
+    require_once 'IO/AVIF.php';
 }
 
 $options = getopt("f:");
 
 if (! isset($options['f'])) {
-    fprintf(STDERR, "Usage: php isobmfftree.php -f <isobmff_file>\n");
-    fprintf(STDERR, "ex) php isobmfftree.php -f input.heic\n");
+    fprintf(STDERR, "Usage: php aviftree.php -f <avif_file>\n");
+    fprintf(STDERR, "ex) php aviftree.php -f input.avif\n");
     exit(1);
 }
 
@@ -19,18 +19,18 @@ $filename = $options['f'];
 if ($filename === "-") {
     $filename = "php://stdin";
 }
-$isobmffdata = file_get_contents($filename);
+$avifdata = file_get_contents($filename);
 $opts = array();
 
-$isobmff = new IO_ISOBMFF();
+$avif = new IO_AVIF();
 
 try {
-    $isobmff->parse($isobmffdata, $opts);
+    $avif->parse($avifdata, $opts);
 } catch (Exception $e) {
-    echo "ERROR: isobmfftree: $filename:".PHP_EOL;
+    echo "ERROR: aviftree: $filename:".PHP_EOL;
     echo $e->getMessage()." file:".$e->getFile()." line:".$e->getLine().PHP_EOL;
     echo $e->getTraceAsString().PHP_EOL;
     exit (1);
 }
 
-$isobmff->tree();
+$avif->tree();

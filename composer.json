@@ -1,9 +1,9 @@
 {
-    "name": "yoya/io_isobmff",
+    "name": "yoya/io_avif",
     "type": "library",
-    "description": "ISOBMFF library",
-    "keywords": ["isobmff", "heif", "avif"],
-    "homepage": "http://pwiki.awm.jp/~yoya/?IO_ISOBMFF",
+    "description": "AVIF library",
+    "keywords": ["avif", "image"],
+    "homepage": "http://pwiki.awm.jp/~yoya/?IO_AVIF",
     "license": "MIT",
     "authors": [
         {
@@ -14,9 +14,9 @@
     "require": {
         "php": ">=5.1.0",
         "yoya/io_bit": "~2.4.0",
-	"yoya/io_icc": "~1.1.3"
+        "yoya/io_isobmff": "~2.0",
     },
     "autoload": {
-        "psr-0": { "IO_ISOBMFF": "." }
+        "psr-0": { "IO_AVIF": "." }
     }
 }
