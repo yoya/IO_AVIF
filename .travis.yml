@@ -5,3 +5,7 @@ php:
   - nightly
 
 install: composer require
+
+script:
+ - php vendor/yoya/io_avif/sample/avifdump.php -f input.avif
+ - php vendor/yoya/io_avif/sample/aviftree.php -f input.avif
