@@ -1,4 +1,4 @@
-IO_AVIF
+IO_AVIF [![Travis Build Status](https://travis-ci.org/yoya/IO_AVIF.svg?branch=master)](https://travis-ci.org/yoya/IO_AVIF)
 ======
 
 AVIF binary perser dumper, converter, powered by PHP.
