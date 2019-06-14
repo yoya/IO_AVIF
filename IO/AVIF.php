@@ -1,7 +1,7 @@
 <?php
 
 /*
-  IO_AVIF class - v2.1
+  IO_AVIF class - v2.2
   (c) 2017/07/26 yoya@awm.jp
   ref) https://github.com/AOMediaCodec/av1-avif/wiki
  */
